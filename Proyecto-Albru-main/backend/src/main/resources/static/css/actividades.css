@@ -1,0 +1,213 @@
+.main-content {
+    margin-left: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+body {
+    background-color: #14161e;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+}
+
+header {
+    padding: 2rem 3rem 1rem;
+    border-bottom: 1px solid #2c2f3b;
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #0d6efd, #6c5ce7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: #a0a4b8;
+    font-size: 1.1rem;
+}
+
+.filter-bar {
+    background-color: #1f212b;
+    padding: 2rem 3rem;
+    margin: 1rem 0;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    color: #a0a4b8;
+    font-weight: 600;
+}
+
+.filter-bar select,
+.filter-bar input {
+    background-color: #2c2f3b;
+    color: #ffffff;
+    border: 2px solid #3a3d4a;
+    border-radius: 0.75rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    min-width: 220px;
+}
+
+.filter-bar select:focus,
+.filter-bar input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    outline: none;
+}
+
+.btn-filter {
+    background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 50px;
+}
+
+.btn-filter:hover {
+    background: linear-gradient(135deg, #0b5ed7, #0a58ca);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+}
+
+.ventas-section {
+    padding: 2rem 3rem;
+}
+
+.venta-card {
+    background-color: #1e2029;
+    border-left: 5px solid #0d6efd;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.4s ease forwards;
+    opacity: 0;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.venta-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(13, 110, 253, 0.2);
+}
+
+.venta-card h5 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #f8f9fa;
+}
+
+.venta-card p {
+    margin-bottom: 0.3rem;
+    color: #dee2e6;
+}
+
+.additional-info-box {
+    background-color: #2c2f3b;
+    border: 1px solid #3a3d4a;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+.modal-content {
+    border-radius: 1rem;
+    border: 1px solid #3a3d4a;
+}
+
+.modal-header {
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.modal-body strong {
+    color: #0d6efd;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert {
+    background-color: #2c2f3b;
+    border: none;
+    color: #ffc107;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding-top: 20px;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .filter-bar {
+        padding: 1.5rem;
+    }
+
+    header {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Asesor</title>
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Menú lateral -->
+        <nav th:replace="~{fragments/navbar :: sidebar}"></nav>
+
+        <!-- Botón para toggle del menú -->
+        <div th:replace="~{fragments/navbar :: menuToggle}"></div>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <div class="dashboard-container">
+                <!-- Panel izquierdo -->
+                <div class="left-panel">
+                    <div class="panel-header">
+                        <h2>Resumen Semanal</h2>
+                    </div>
+
+                    <div class="attendance-chart">
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-label">Lun</div>
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar" style="height: 100%; background-color: #4CAF50;"></div>
+                            </div>
+                            <div class="chart-bar-hours">8h</div>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-label">Mar</div>
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar" style="height: 93.75%; background-color: #4CAF50;"></div>
+                            </div>
+                            <div class="chart-bar-hours">7.5h</div>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-label">Mié</div>
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar" style="height: 75%; background-color: #FFC107;"></div>
+                            </div>
+                            <div class="chart-bar-hours">6h</div>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-label">Jue</div>
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar" style="height: 100%; background-color: #4CAF50;"></div>
+                            </div>
+                            <div class="chart-bar-hours">8h</div>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-label">Vie</div>
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar" style="height: 0%; background-color: #F44336;"></div>
+                            </div>
+                            <div class="chart-bar-hours">0h</div>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-label">Sáb</div>
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar" style="height: 0%; background-color: #607D8B;"></div>
+                            </div>
+                            <div class="chart-bar-hours">0h</div>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-label">Dom</div>
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar" style="height: 0%; background-color: #607D8B;"></div>
+                            </div>
+                            <div class="chart-bar-hours">0h</div>
+                        </div>
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-value">36.5</div>
+                            <div class="stat-label">Horas esta semana</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">4/5</div>
+                            <div class="stat-label">Días presentes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Días ausentes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel derecho -->
+                <div class="right-panel">
+                    <div class="employee-profile">
+                        <div class="profile-pic">
+                            <img src="" alt="USER" />
+                        </div>
+                        <h2 sec:authentication="principal.fullName"></h2>
+                        <p sec:authentication="principal.roleName" class="user-rol"></p>
+                    </div>
+
+                    <div class="time-section">
+                        <div class="current-time">
+                            <span id="current-hours">00</span>
+                            <span>:</span>
+                            <span id="current-minutes">00</span>
+                        </div>
+                        <div class="date-display" id="current-date"></div>
+                    </div>
+
+                    <div class="attendance-status">
+                        <div class="status-card">
+                            <div class="status-label">Entrada</div>
+                            <div class="status-value" id="start-time">--:--</div>
+                        </div>
+                        <div class="status-card">
+                            <div class="status-label">Salida</div>
+                            <div class="status-value" id="end-time">--:--</div>
+                        </div>
+                    </div>
+
+                    <div class="breaks-section" id="breaks-section">
+                        <h3>Descansos hoy</h3>
+                    </div>
+
+                    <div class="action-buttons" id="action-buttons">
+                        <button class="btn-start" onclick="handleStartDay()">
+                            <ion-icon name="time-outline"></ion-icon> Marcar Entrada
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="/js/asistenciaYsidebar.js"></script>
+
+</body>
+
+</html>

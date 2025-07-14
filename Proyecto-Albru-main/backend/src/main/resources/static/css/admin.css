@@ -1,0 +1,425 @@
+html, body {
+    font-family: sans-serif;
+    font-size: 1rem;
+    height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    grid-template-rows: 80px 1fr;
+    grid-template-areas: 
+    "aside navbar"
+    "aside main"
+    ;
+    height: 100dvh;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+
+body{
+    color: #000000;
+}
+
+.content {
+    background-color: transparent;
+    color: #fff;
+    grid-area: main;
+}
+
+
+/*GRID PARA DISPOSITIVOS MOVILES*/
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 80px auto;
+        grid-template-areas: 
+            "navbar"
+            "main";
+        overflow-x: hidden;
+    }
+}
+
+/*  MAIN SECTION  */
+
+.first-item-main {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
+    padding: 30px;
+}
+
+.title-main {
+    text-align: left;
+    font-size: 1.8rem;    
+    font-weight: bold;
+    color: #1e43b8;
+}
+
+.btn-create-users,
+.btn-create-leads {
+    outline: none;
+    border: none;
+    background-color: #1e43b8;
+    color: #fff;
+    font-weight: 600;
+    margin-left: 20px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-create-users:hover,
+.btn-create-leads:hover {
+    background-color: #153395;
+}
+
+.second-item-main {
+    margin: 0px 15px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.table {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.table-header th {
+    background-color: #1e43b8;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+}
+
+tr {
+    display: table-row;
+    position: relative;
+    top: 0;
+}
+
+.column-item {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.table-body {
+    display: table-row-group;
+    position: relative;
+}
+.table td {
+    text-align: center;
+}
+
+
+.data-table {
+    padding: 10px;
+    display: table-cell;
+    overflow: hidden;
+    position: relative;
+}
+
+.buttons-container {
+    width: 120px;
+    display: flex;
+}
+
+.btn-actions {
+    border: none;
+    background-color: transparent;
+    font-size: .9rem;
+    margin: 0px 10px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    gap: 5px;
+}
+
+.btn-edit {
+    background-color: #4fb822;
+}
+
+.btn-delete {
+    background-color: #f44;
+}
+.btn-actions:hover {
+    opacity: 0.8;
+}
+
+/* MODAL CREATE USERS */
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    z-index: 2100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.modal-title {
+    text-align: center;
+}
+
+/* Form styling */
+
+.form-modal {
+    padding: 35px 15px 0px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #1e43b8;
+}
+
+.form-group input,option,select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #1e43b8;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.form-group input,option,select:focus {
+    outline: none;
+}
+
+.modal-select:hover {
+    outline: none;
+}
+
+.modal-option {
+    background-color: #fff;
+}
+
+.modal-select:focus {
+    outline: none;
+}
+
+/* Submit button */
+
+.form-button {
+    padding-top: 15px;
+    margin: auto;
+}
+
+.btn-submit {
+    background-color: #1e43b8;
+    color: #fff;
+    padding: 15px 25px;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #153395;
+}
+
+/* MODAL DELETE */
+
+.modal-overlay-delete {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-delete {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-buttons-delete {
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-cancel-delete {
+    background-color: #ccc;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: 0px 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-confirm-delete {
+    background-color: #f44;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-cancel-delete:hover {
+    background-color: #bbb;
+}
+
+.btn-confirm-delete:hover {
+    background-color: #d22;
+}
+
+/* MODAL EDIT */
+
+.modal-overlay-edit {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-edit {
+    background-color: #fff;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content-edit h3 {
+    margin-bottom: 15px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #1e43b8;
+}
+
+.modal-buttons-edit {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-cancel-edit,
+.btn-confirm-edit {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-cancel-edit {
+    background-color: #ccc;
+}
+
+.btn-confirm-edit {
+    background-color: #1e43b8;
+    color: #fff;
+}
+
+.btn-cancel-edit:hover {
+    background-color: #bbb;
+}
+
+.btn-confirm-edit:hover {
+    background-color: #153395;
+}

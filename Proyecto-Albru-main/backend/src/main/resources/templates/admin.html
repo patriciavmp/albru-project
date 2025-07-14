@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Asesor</title>
+
+    <!-- ICONOS & FUENTES -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- ICONO Y ESTILOS PERSONALIZADOS -->
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Menú lateral -->
+        <div th:replace="~{fragments/navbar :: sidebar}"></div>
+
+        <!-- Botón para toggle del menú -->
+        <div th:replace="~{fragments/navbar :: menuToggle}"></div>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="main-content">
+            <div class="container">
+                <main class="grid-item content">
+                    <div class="main-conteiner">
+                        <div class="first-item-main">
+                            <h1 class="title-main">Usuarios</h1>
+                            <div class="btn-content">
+                                <button type="button" class="btn btn-primary btn-create-users" id="openModalBtn">+ Nuevo
+                                    Usuario</button>
+                            </div>
+                        </div>
+                        <div class="second-item-main">
+                            <table class="table">
+                                <thead class="table-header">
+                                    <tr>
+
+                                        <th class="column-item data-table">DNI</th>
+                                        <th class="column-item data-table">Nombres</th>
+                                        <th class="column-item data-table">Apellidos</th>
+                                        <th class="column-item data-table">Genero</th>
+                                        <th class="column-item data-table">Rol</th>
+                                        <th class="column-item data-table">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-body">
+
+                                    <tr th:each="usuario : ${listaUsuarios}">
+                                        <td th:text="${usuario.dni}"></td>
+                                        <td th:text="${usuario.nombres}"></td>
+                                        <td th:text="${usuario.apellidos}"></td>
+                                        <td th:text="${usuario.genero}"></td>
+                                        <td th:text="${usuario.getRoleName()}"></td>
+                                        <td class="data-table">
+                                            <div class="buttons-container">
+                                                <button class="btn-actions btn-edit" th:data-user-dni="${usuario.dni}"
+                                                    th:data-user-nombres="${usuario.nombres}"
+                                                    th:data-user-apellidos="${usuario.apellidos}"
+                                                    th:data-user-genero="${usuario.genero}"
+                                                    th:data-user-role-id="${usuario.authorityId}"
+                                                    onclick="openEditModal(this)">
+                                                    <i class="bi bi-pencil-square"></i> Editar
+                                                </button>
+                                                <button class="btn-actions btn-delete" th:data-user-id="${usuario.dni}"
+                                                    th:data-user-name="${usuario.nombres + ' ' + usuario.apellidos}"
+                                                    onclick="openDeleteModal(this.getAttribute('data-user-id'), this.getAttribute('data-user-name'))">
+                                                    <i class="bi bi-trash"></i> Eliminar
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!-- MODAL CREATE -->
+        <div class="custom-modal" id="customModal">
+            <div class="modal-overlay" id="modalOverlay"></div>
+            <div class="modal-content">
+                <span class="close-modal" id="closeModalBtn">&times;</span>
+                <h2 class="modal-title" id="modalTitle">Crear nuevo usuario</h2>
+                <form class="form-modal" id="create-user-form" th:action="@{/user/admin}" th:object="${usuario}"
+                    method="POST">
+                    <input type="hidden" id="editMode" value="false">
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" name="name" th:field="*{nombres}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Apellido:</label>
+                        <input type="text" id="last-name" name="last_name" th:field="*{apellidos}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">Dni:</label>
+                        <input type="text" id="dni" name="dni" th:field="*{dni}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Género:</label>
+                        <select id="gender" name="gender" class="modal-select" th:field="*{genero}" required>
+                            <option value="" disabled selected>Seleccione un género</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" th:field="*{password}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-type">Tipo de usuario:</label>
+                        <select id="user-type" th:field="*{authorityId}" required>
+                            <option value="" disabled selected>Seleccione un rol</option>
+                            <option th:each="authority : ${listaAuthorities}" th:value="${authority.id}"
+                                th:text="${authority.authority}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="button-container">
+                        <div class="form-group form-button">
+                            <button type="submit" class="btn-submit" id="submitButton">Registrar nuevo usuario</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- MODAL DELETE  -->
+        <div id="modal-delete-user" class="modal-overlay-delete">
+            <div class="modal-content-delete">
+                <h3>¿Estás seguro de que deseas eliminar a <span id="delete-user-name"></span>?</h3>
+                <form id="delete-form" method="post" th:action="@{/user/delete/__DNI__}">
+                    <div class="modal-buttons-delete">
+                        <button type="button" class="btn-cancel-delete" onclick="closeDeleteModal()">Cancelar</button>
+                        <button type="submit" class="btn-confirm-delete">Eliminar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <!-- MODAL EDIT USERS -->
+
+    </div>
+
+    </div>
+
+    <script src="/js/admin.js"></script>
+    <script src="/js/asistenciaYsidebar.js"></script>
+
+</body>
+
+</html>

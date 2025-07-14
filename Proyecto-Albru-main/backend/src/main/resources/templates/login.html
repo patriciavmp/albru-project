@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="form-box login">
+        <form th:action="@{/login}" method="post">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Username" id="username" name="username" required >
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Pass" id="password" name="password" required>
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <div class="forgot-link">
+                <a href="#" class="forgot-text">Forgot password?</a>
+            </div>
+            <div th:if="${param.error}" class="alert alert-danger" style="color: red; text-align: center;">
+            <p>¡Error de autenticación! El Username o la contraseña son incorrectos. Por favor, inténtelo nuevamente.</p>
+            </div>
+            <br>
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+
+    <div class="toggle-box">
+        <div class="toggle-panel toggle-left">
+            <h1>¡Hola, Bienvenido!</h1>
+            <img src="/images/undraw_login.svg" alt="Ilustración de login" class="undraw-image">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

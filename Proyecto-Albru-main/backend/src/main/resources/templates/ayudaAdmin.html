@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Admin</title>
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="/css/adminAyuda.css">
+</head>
+<body>
+    <!-- Botón para toggle del menú -->
+    <div th:replace="~{fragments/navbar :: menuToggle}"></div>
+    <div th:replace="~{fragments/navbar :: sidebar}" class="grid-item sidebar"></div>
+<div class="main-content">
+    <div class="grid-container">
+        <main class="grid-item main">
+            <h1 class="title">Centro de Ayuda y Soporte</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Problema con Cliente
+                    </h5>
+                    <div class="info-card">
+                        <div class="head-container">
+                            <h6 class="card-subtitle name-user">
+                                Juanito Alimaña
+                            </h6>
+                            <h6 class="user">Asesor</h6>
+                        </div>
+                        <div>
+                            <h6 class="status">Pendiente</h6>
+                        </div>
+                    </div>
+                    <p class="date-problem">
+                        30/05/2025
+                    </p>
+                    <div class="description-problem">
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus dolores enim quisquam, eveniet libero fuga veniam placeat autem, cupiditate, odio exercitationem deserunt vel eius. Cum voluptas eius reiciendis aliquam cupiditate.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum sit itaque deserunt vel nobis, quia obcaecati voluptas numquam delectus et quas. Nobis excepturi iure neque? Numquam minus quisquam enim maxime! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat unde aut pariatur architecto itaque nesciunt facilis odio vero corrupti qui distinctio dicta quibusdam velit dolorem odit laudantium ipsum, iure atque.
+                        </p>
+                    </div>
+                    <div class="links-card-container">
+                        <a th:href="@{/user/detallesAdmin}" id="detallesAdmin" sec:authorize="hasRole('ADMIN')" class="card-link">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Problema con Envio de Datos
+                    </h5>
+                    <div class="info-card">
+                        <div class="head-container">
+                            <h6 class="card-subtitle name-user">
+                                Padre Domingo
+                            </h6>
+                            <h6 class="user">GTR</h6>
+                        </div>
+                        <div>
+                            <h6 class="status">Pendiente</h6>
+                        </div>
+                    </div>
+                    <p class="date-problem">
+                        02/06/2025
+                    </p>
+                    <div class="description-problem">
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus dolores enim quisquam, eveniet libero fuga veniam placeat autem, cupiditate, odio exercitationem deserunt vel eius. Cum voluptas eius reiciendis aliquam cupiditate.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum sit itaque deserunt vel nobis, quia obcaecati voluptas numquam delectus et quas. Nobis excepturi iure neque? Numquam minus quisquam enim maxime! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat unde aut pariatur architecto itaque nesciunt facilis odio vero corrupti qui distinctio dicta quibusdam velit dolorem odit laudantium ipsum, iure atque.
+                        </p>
+                    </div>
+                    <div class="links-card-container">
+                        <a th:href="@{/user/detallesAdmin}" id="detallesAdmin" sec:authorize="hasRole('ADMIN')" class="card-link">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Problema Ténico con Cliente
+                    </h5>
+                    <div class="info-card">
+                        <div class="head-container">
+                            <h6 class="card-subtitle name-user">
+                                Juan Pérez
+                            </h6>
+                            <h6 class="user">Asesor</h6>
+                        </div>
+                        <div>
+                            <h6 class="status">Pendiente</h6>
+                        </div>
+                    </div>
+                    <p class="date-problem">
+                        28/05/2025
+                    </p>
+                    <div class="description-problem">
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus dolores enim quisquam, eveniet libero fuga veniam placeat autem, cupiditate, odio exercitationem deserunt vel eius. Cum voluptas eius reiciendis aliquam cupiditate.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum sit itaque deserunt vel nobis, quia obcaecati voluptas numquam delectus et quas. Nobis excepturi iure neque? Numquam minus quisquam enim maxime! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat unde aut pariatur architecto itaque nesciunt facilis odio vero corrupti qui distinctio dicta quibusdam velit dolorem odit laudantium ipsum, iure atque.
+                        </p>
+                    </div>
+                    <div class="links-card-container">
+                        <a th:href="@{/user/detallesAdmin}" id="detallesAdmin" sec:authorize="hasRole('ADMIN')" class="card-link">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+    <script src="/js/asistenciaYsidebar.js"></script>
+</body>
+</html>
